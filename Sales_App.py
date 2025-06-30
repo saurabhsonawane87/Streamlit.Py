@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+
 st.title("SALES DASHBOARD")
 file_path = r"C:\Users\saura\OneDrive\Desktop\Sales_final.xlsx"
 df = pd.read_excel(file_path,engine='openpyxl')
@@ -31,6 +32,5 @@ with col2:
     Country_sales=filter_df.groupby('COUNTRY')['SALES'].sum().reset_index()
     fig_bar=px.bar(Country_sales,x='COUNTRY',y='SALES',title= 'Toatl Sales By Country')
     st.plotly_chart(fig_bar,use_container_width=True)
-
 st.subheader("FILTERED_DATA")
 st.dataframe(filter_df)
